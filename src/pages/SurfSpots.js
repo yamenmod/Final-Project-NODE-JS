@@ -26,7 +26,7 @@ function SurfSpots({ user }) {
   const handleSubmit = async () => {
     setError("");
 
-    // Validation - check if any fields are empty
+    // make sure all fields have something
     if (!form.spot_name || !form.difficulty || !form.type || !form.location) {
       setError("⚠️ You cannot leave any fields empty!");
       return;

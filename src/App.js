@@ -9,7 +9,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [showWelcome, setShowWelcome] = useState(true);
 
-  // Load user from storage on refresh
+  // check if user logged in before refresh
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {

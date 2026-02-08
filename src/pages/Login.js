@@ -11,9 +11,9 @@ function Login({ onLoginSuccess }) {
   const handleSubmit = async () => {
     setMessage("");
 
-    // Validation - check for empty fields
+    // check if fields r empty
     if (isRegister) {
-      // Registration validation
+      // registration checks
       if (!username || !password || !email) {
         setMessage("⚠️ All fields are required! (Username, Email, Password)");
         return;
@@ -31,7 +31,7 @@ function Login({ onLoginSuccess }) {
         return;
       }
     } else {
-      // Login validation
+      // login checks
       if (!username || !password) {
         setMessage("⚠️ Username and password are required!");
         return;
