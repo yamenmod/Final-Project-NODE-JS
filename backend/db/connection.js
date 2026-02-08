@@ -1,10 +1,10 @@
-// ===== DATABASE CONNECTION SETUP =====
-// mysql2: Package to connect Node.js to MySQL database
+// db setup
+// mysql2 - connects to db
 const mysql = require("mysql2");
 
-// ===== CREATE DATABASE CONNECTION =====
-// This creates a connection pool to the MySQL database
-// It establishes connection details needed to connect to our database
+// create connection
+// connection pool to mysql
+// setup connection detials
 const db = mysql.createConnection({
   host: "localhost", // Where database is running (localhost = this computer)
   user: "root", // MySQL username (usually "root" by default)
@@ -12,18 +12,18 @@ const db = mysql.createConnection({
   database: "surf_tracker", // Name of our database
 });
 
-// ===== CONNECT TO DATABASE =====
-// Attempts to connect to the database and handles any errors
+// connect to db
+// try to connect & handle errors
 db.connect((err) => {
   if (err) {
-    // If connection fails, print error message
+    // connection failed
     console.log("DB ERROR:", err.message);
   } else {
-    // If connection succeeds, confirm in console
+    // nice we're connected
     console.log("MySQL connected!");
   }
 });
 
-// ===== EXPORT DATABASE CONNECTION =====
-// Make this connection available to other files (routes) that need to query the database
+// export the db
+// make it available for routes
 module.exports = db;
