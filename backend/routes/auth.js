@@ -15,6 +15,7 @@ const db = require("../db/connection");
 router.post("/login", (req, res) => {
   // Extract username and password from request body (data sent from frontend)
   const { username, password } = req.body;
+  console.log("LOGIN REQ:", username);
 
   // SQL query to find user with matching username AND password
   // The ? symbols are placeholders to prevent SQL injection attacks
@@ -23,7 +24,10 @@ router.post("/login", (req, res) => {
   // Execute the SQL query
   db.query(sql, [username, password], (err, results) => {
     // If database query fails, send error response
-    if (err) return res.status(500).json({ message: "DB error" });
+    if (err) {
+      console.error("LOGIN QUERY ERROR:", err);
+      return res.status(500).json({ message: "DB error" });
+    }
 
     // If no user found with those credentials, send error
     // results.length === 0 means no rows were returned
